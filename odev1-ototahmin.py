@@ -6,7 +6,10 @@ Belirleyeceginiz sayi 0-100 arasinda olmalidir')
 #while dongusu ile bunun dogrulugunu kontrol
 #edecek ve eger aksilik yoksa ilk donguden cikip
 #ikinciye devam edecek
+ustsinir=101
+altsinir=0
 while True :
+
     try:
         sayi = input('Lutfen tahmin edilmesi gereken sayiyi belirtiniz :')
 
@@ -16,31 +19,35 @@ while True :
             continue
         else :
             print('Sayiniz belirlendi')
+
             break
+
     except ValueError :
         print('Lutfen sadece tam sayi giriniz!')
-x = random.randint(0, 100)
-print('ilk tahmin', x)
 
 while True :
-#bu dongude kulanicinin belirledigi sayiyi cabuk bulabilmek
-#icin programin random yapacagi araligi kisa tuttum
+    try:
+
+        x = random.randint(altsinir, ustsinir)
+        print('Tahmin :',x)
+    #bu dongude kulanicinin belirledigi sayiyi cabuk bulabilmek
+    #icin programin random yapacagi araligi kisa tuttum
         tahmin = input('Tahmin edilen sayi sizin sayinizdan buyukse - ye \
     kucukse + ya eger dogruysa enter\'a  basin lutfen')
         if tahmin == '':
             print("En sonunda :)")
             break
         if tahmin == '-':
-
-            y = random.randint((sayi-3),(sayi+3))
-            print(y)
+            ustsinir=x-1
         elif tahmin == '+':
-            z = random.randint((sayi - 3),(sayi+3))
-            print(z)
+            altsinir=x+1
         else:
             print('Tekrar deneyin')
-#program calisiyor aksilik yok fakat bi sayiyi
-#bulmaya calisirken birden fazla ayni tahmini
-#aliyoruz umarim duzeltebilirim
+    except:
+        print('Birseyler ters gitti lutfen tekrar deneyin')
+        break
+
+
+
 
 
